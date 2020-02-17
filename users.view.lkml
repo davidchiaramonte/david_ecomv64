@@ -70,6 +70,10 @@ view: users {
   measure: count {
     type: count
     drill_fields: [detail*]
+    link: {
+      label: "Drill Dashboard"
+      url: "/dashboards/266?Gender={{ users.gender._value }}"
+    }
   }
 
   # ----- Sets of fields for drilling ------
