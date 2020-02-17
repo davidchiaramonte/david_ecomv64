@@ -72,7 +72,7 @@ view: users {
     drill_fields: [detail*]
     link: {
       label: "Drill Dashboard"
-      url: "/dashboards/266?Gender={{ users.gender._value }}"
+      url: "/dashboards/266?Gender={{ users.gender._value }}&State={{ _filters['users.state'] | url_encode }}"
     }
   }
 
