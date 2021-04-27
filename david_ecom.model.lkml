@@ -16,6 +16,10 @@ datagroup: bug_repro_refresh_rate {
 
 persist_with: david_ecom_default_datagroup
 
+explore: post_name_change {
+  from: orders
+}
+
 explore: events {
   join: users {
     type: left_outer

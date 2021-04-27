@@ -7,6 +7,23 @@ view: orders {
     sql: ${TABLE}.id ;;
   }
 
+  dimension: button_test {
+    type: string
+    sql: 1 ;;
+    html: <a href="https://www.google.com" class="button">Next Stage</a> ;;
+  }
+
+  dimension: unordered_line_test {
+    type: string
+    sql: 1 ;;
+    html:
+    <ul>
+    <li>First line</li>
+    <li>Second line </li>
+    <li>Third line's the charm</li>
+    <ul>;;
+  }
+
   dimension: id_embed_repro {
     label: "Risk Rank"
     type: number
@@ -33,6 +50,16 @@ view: orders {
     type: number
     sql: ${TABLE}.id ;;
     html: <p style="font-size: 40px; color: black; text-align: left;">{{rendered_value}}%+</p>;;
+  }
+
+  dimension: status_multi_case {
+    type: string
+    label: "Account Type"
+    sql: CASE WHEN ${status} = 'pending' THEN 'Pending'
+    WHEN ${status} = 'complete' THEN 'COMPLETE'
+    WHEN ${status} = 'cancelled' THEN 'cancelled'
+    ELSE 'SOMETHING else'
+    END;;
   }
 
   parameter: is_order_new {

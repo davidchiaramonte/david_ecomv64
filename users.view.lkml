@@ -17,9 +17,25 @@ view: users {
     sql: ${TABLE}.age ;;
   }
 
+  filter: age_and_id_filter {
+    type: number
+    sql: {% condition age_and_id_filter %} ${id} {% endcondition %} OR {% condition age_and_id_filter %} ${age_age_age} {% endcondition %}
+  OR {% condition age_and_id_filter %} ${age} {% endcondition %}  ;;
+  }
+
+  # filter: age_filter {
+  #   type: number
+  #   suggest_dimension: users.age
+  # }
+
   dimension: city {
     type: string
     sql: ${TABLE}.city ;;
+  }
+
+  dimension: null_test {
+    type: string
+    sql: CASE WHEN ${first_name} = 'John' THEN 'John' ELSE null END ;;
   }
 
   dimension: country {
@@ -50,6 +66,15 @@ view: users {
   dimension: first_name {
     type: string
     sql: ${TABLE}.first_name ;;
+  }
+
+  dimension: transfer_to_with_link {
+    type: string
+    sql: 'Transfer to another agent' ;;
+    link: {
+      label: "Transfer to {{ _filters['users.first_name'] }}"
+      url: "https://www.google.com/?q={{ _filters['users.first_name'] }}"
+    }
   }
 
   dimension: gender {
